@@ -1,0 +1,110 @@
+configuration {
+    modi:                       "drun";
+    show-icons:                 true;
+    display-dmenu:              "";
+    drun-display-format:        "{name}";
+    terminal:                   "kitty";
+    font:                       "JetBrainsMono Nerd Font 11";
+    icon-theme:                 "Papirus";
+    
+    /* Otimização para apps novos e ordenação */
+    sort:                       true;
+    sorting-method:             "fzf";
+    disable-history:            false; /* Mantenha false para priorizar apps novos/usados */
+    steal-focus:                true;
+}
+
+@import "color.rasi"
+
+* {
+    bg-col:        @background;
+    border-col:    @active;
+    selected-col:  @selected-bg;
+    fg-col:        @foreground;
+    urgent-col:    @selected-fg;
+    active-col:    @active; /* Mapeando a variável active */
+    
+    background-color: transparent;
+}
+
+window {
+    width:            800px;
+    height:           460px;
+    border:           3px;
+    border-color:     @selected-col;
+    background-color: @bg-col;
+    border-radius:    12px;
+}
+
+mainbox {
+    children:         [ inputbar, listview ];
+    background-color: @bg-col;
+}
+
+/* --- Input Bar --- */
+inputbar {
+    children:         [ prompt, entry ];
+    padding:          15px 20px;
+    spacing:          10px;
+}
+
+prompt {
+    background-color: @selected-col;
+    text-color:       @bg-col;
+    padding:          8px 15px;
+    border-radius:    8px;
+}
+
+entry {
+    padding:          8px;
+    text-color:       @fg-col;
+    placeholder:      "Pesquisar...";
+    placeholder-color: @fg-col;
+}
+
+/* --- List View --- */
+listview {
+    padding:          10px 20px;
+    columns:          2;
+    lines:            8;
+    cycle:            true;
+    dynamic:          true;
+    layout:           vertical;
+    spacing:          5px;
+    fixed-height:     false;
+    background-color: transparent;
+}
+
+/* --- Elements (Normal, Urgent e Active) --- */
+element {
+    padding:          8px;
+    spacing:          10px;
+    border-radius:    8px;
+    cursor:           pointer;
+    background-color: transparent;
+}
+
+element alternate.normal {
+    background-color: @transparent;
+}
+
+
+/* Seleção do Usuário */
+element selected.normal {
+    background-color: @selected-col;
+    text-color:       @bg-col;
+}
+
+element-icon {
+    size:             32px;
+    cursor:           inherit;
+    background-color: transparent;
+}
+
+element-text {
+    vertical-align:   0.5;
+    horizontal-align: 0.0;
+    cursor:           inherit;
+    text-color:       inherit;
+    background-color: transparent;
+}

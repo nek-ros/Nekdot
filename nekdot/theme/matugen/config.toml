@@ -1,0 +1,28 @@
+[config]
+
+reload_apps = true
+set_wallpaper = true
+wallpaper_tool = "swww"
+
+[templates.rofi]
+
+input_path = '~/.config/nekdot/theme/matugen/templates/rofi.rasi'
+output_path = '~/.config/nekdot/theme/rofi/color.rasi'
+post_hook = 'pkill -SIGUSR2 rofi'
+
+[templates.waybar]
+
+input_path = '~/.config/nekdot/theme/matugen/templates/waybar.css'
+output_path = '~/.config/nekdot/theme/waybar/theme/colors.css'
+post_hook = 'pkill -SIGUSR2 waybar'
+
+[templates.kitty]
+
+input_path = '~/.config/nekdot/theme/matugen/templates/kitty-template.conf'
+output_path = '~/.config/nekdot/theme/kitty/colors.conf'
+post_hook = 'kill -SIGUSR1 $(pgrep kitty)'
+
+[templates.hyprland]
+
+input_path = '~/.config/nekdot/theme/matugen/templates/hyprland.conf'
+output_path = '~/.config/hypr/colors.conf'

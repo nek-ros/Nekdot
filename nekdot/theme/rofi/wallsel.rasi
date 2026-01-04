@@ -1,0 +1,119 @@
+/* --- CONFIGURAÇÃO GLOBAL --- */
+configuration {
+    modi:                       "drun,run,window";
+    show-icons:                 true;
+    terminal:                   "kitty";
+    font:                       "JetBrainsMono Nerd Font 11";
+    icon-theme:                 "Papirus";
+    
+    /* Ordenação e busca inteligente */
+    sort:                       true;
+    sorting-method:             "fzf";
+    disable-history:            false;
+    steal-focus:                true;
+    
+    display-drun:               " Apps";
+    drun-display-format:        "{name}";
+}
+
+@import "color.rasi"
+
+/* --- MAPEAMENTO DE CORES --- */
+* {
+    bg:             @background;
+    fg:             @foreground;
+    accent:         @selected-bg;
+    accent-fg:      @selected-fg;
+    border:         @active;
+
+    background-color: transparent;
+    text-color:       @fg;
+}
+
+/* --- JANELA PRINCIPAL --- */
+window {
+    width:            1000px;
+    height:           860px;
+    border:           3px;
+    border-color:     @accent;
+    background-color: @bg;
+    border-radius:    12px;
+    padding:          20px;
+}
+
+mainbox {
+    children:         [ inputbar, listview ];
+    spacing:          20px;
+}
+
+/* --- BARRA DE PESQUISA --- */
+inputbar {
+    children:         [ prompt, entry ];
+    spacing:          15px;
+    padding:          10px;
+    background-color: @bg;
+}
+
+prompt {
+    background-color: @accent;
+    text-color:       @bg;
+    padding:          8px 20px;
+    border-radius:    8px;
+    font:             "JetBrainsMono Nerd Font Bold 11";
+}
+
+entry {
+    padding:          8px;
+    placeholder:      "Pesquisar...";
+    placeholder-color: @fg;
+    vertical-align:   0.5;
+}
+
+/* --- GRID DE APLICATIVOS --- */
+listview {
+    columns:          4;
+    lines:            6;
+    cycle:            true;
+    dynamic:          true;
+    spacing:          15px;
+    padding:          10px 5px;
+}
+
+/* --- ELEMENTOS DO GRID --- */
+element {
+    padding:          40px;
+    spacing:          10px;
+    border-radius:    12px;
+    orientation:      vertical; /* Ícone em cima, texto embaixo */
+    cursor:           pointer;
+}
+
+element-icon {
+    size:             64px;    /* Ícones um pouco maiores para o grid */
+    horizontal-align: 0.5;
+    cursor:           inherit;
+}
+
+element-text {
+    horizontal-align: 0.5;
+    cursor:           inherit;
+    font:             "JetBrainsMono Nerd Font 10";
+}
+
+element alternate.normal {
+    background-color: transparent;
+}
+
+/* --- ESTADOS (SELEÇÃO) --- */
+element selected.normal {
+    background-color: @accent;
+}
+
+element-text selected.normal {
+    text-color:       @bg;
+    font:             "JetBrainsMono Nerd Font Bold 10";
+}
+
+element-icon selected.normal {
+    /* Opcional: um leve zoom ou efeito no ícone selecionado pode ser adicionado aqui */
+}

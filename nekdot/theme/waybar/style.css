@@ -1,0 +1,68 @@
+@import url("./theme/colors.css");
+
+* {
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: black;
+  background: transparent;
+}
+
+window#waybar > box {
+  background-color: @bar-bg;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+#workspaces {
+  background-color: @bar-bg;
+  font-family: "JetBrainsMono Nerd Font";
+  border-radius: 5px;
+  padding: 2px;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  margin: 2px;
+  border-radius: 5px;
+  font-weight: bold;
+  background: transparent;
+  color: @bar-pills;
+  box-shadow: inherit;
+  text-shadow: inherit;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+#workspaces button.active {
+  background: @bar-pills;
+  font-weight: bold;
+}
+
+#workspaces button.urgent {
+  background: #f38ba8;
+}
+
+#clock {
+  margin: 4px;
+  padding: 0 6px;
+  border-radius: 5px;
+  background: @bar-pills;
+  font-weight: bold;
+  margin-right: 34px;
+}
+
+#custom-weather {
+  padding: 0 8px;
+  border-radius: 5px;
+  background: @bar-pills;
+  font-weight: bold;
+  margin: 4px;
+}
+
+#tray {
+  padding: 0 8px;
+  border-radius: 5px;
+  background: @bar-pills;
+  font-weight: bold;
+  margin: 4px;
+}
